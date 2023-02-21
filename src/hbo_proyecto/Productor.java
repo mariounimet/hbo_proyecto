@@ -28,10 +28,10 @@ public class Productor extends Thread{
     public void run(){
         while (running){
             try {
-                GotEstudio.semaforos[tipo].acquire();
+                Estudio.semaforos[tipo].acquire();
                 Thread.sleep(tiempo);
-                GotEstudio.partes[tipo] += 1;
-                System.out.println(GotEstudio.partes[tipo]);
+                Estudio.partes[tipo] += 1;
+                System.out.println(Estudio.partes[tipo]);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Productor.class.getName()).log(Level.SEVERE, null, ex);
             }
