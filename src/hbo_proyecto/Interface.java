@@ -11,12 +11,17 @@ package hbo_proyecto;
  */
 public class Interface extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GotInterface
-     */
-    public Interface() {
+    public static Estudio est;
+    public Interface(String nombre) {
         initComponents();
+        this.titulo.setText(nombre);
+        est = new Estudio();
     }
+
+    private Interface() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,7 +56,7 @@ public class Interface extends javax.swing.JFrame {
         masCierre = new javax.swing.JButton();
         menosEnsamblador = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        salario = new javax.swing.JLabel();
+        entrega = new javax.swing.JLabel();
         masEnsamblador = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         salarioPM = new javax.swing.JLabel();
@@ -72,12 +77,12 @@ public class Interface extends javax.swing.JFrame {
         ganancia = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        salario3 = new javax.swing.JLabel();
+        epNormal = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         lanzados = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        salario5 = new javax.swing.JLabel();
+        epPlot = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,7 +91,7 @@ public class Interface extends javax.swing.JFrame {
 
         titulo.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         titulo.setText("Serie");
-        jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 90, 50));
+        jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, 50));
 
         intro.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         intro.setText("0");
@@ -220,9 +225,9 @@ public class Interface extends javax.swing.JFrame {
         jLabel8.setText("Salario PM: $");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 90, -1));
 
-        salario.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        salario.setText("0");
-        jPanel1.add(salario, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 80, -1));
+        entrega.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        entrega.setText("0");
+        jPanel1.add(entrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 80, -1));
 
         masEnsamblador.setText("+");
         masEnsamblador.addActionListener(new java.awt.event.ActionListener() {
@@ -278,7 +283,7 @@ public class Interface extends javax.swing.JFrame {
 
         fallas1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         fallas1.setText("0");
-        jPanel1.add(fallas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, -1, -1));
+        jPanel1.add(fallas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel5.setText("Distribución de empleados");
@@ -308,9 +313,9 @@ public class Interface extends javax.swing.JFrame {
         jLabel19.setText("- Normales:");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 140, -1));
 
-        salario3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        salario3.setText("0");
-        jPanel1.add(salario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, 80, -1));
+        epNormal.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        epNormal.setText("0");
+        jPanel1.add(epNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, 80, -1));
 
         jLabel20.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel20.setText("- Plot twist:");
@@ -328,9 +333,9 @@ public class Interface extends javax.swing.JFrame {
         jLabel22.setText("Episodios lanzados:");
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 240, -1));
 
-        salario5.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        salario5.setText("0");
-        jPanel1.add(salario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 80, -1));
+        epPlot.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        epPlot.setText("0");
+        jPanel1.add(epPlot, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 80, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 560));
 
@@ -422,15 +427,18 @@ public class Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel actividadDirector;
-    private javax.swing.JLabel actividadPM;
-    private javax.swing.JLabel cierre;
-    private javax.swing.JLabel credito;
-    private javax.swing.JLabel ensamblador1;
-    private javax.swing.JLabel fallas1;
-    private javax.swing.JLabel ganancia;
-    private javax.swing.JLabel inicio;
-    private javax.swing.JLabel intro;
+    public static javax.swing.JLabel actividadDirector;
+    public static javax.swing.JLabel actividadPM;
+    public static javax.swing.JLabel cierre;
+    public static javax.swing.JLabel credito;
+    public static javax.swing.JLabel ensamblador1;
+    public static javax.swing.JLabel entrega;
+    public static javax.swing.JLabel epNormal;
+    public static javax.swing.JLabel epPlot;
+    public static javax.swing.JLabel fallas1;
+    public static javax.swing.JLabel ganancia;
+    public static javax.swing.JLabel inicio;
+    public static javax.swing.JLabel intro;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -452,7 +460,7 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lanzados;
+    public static javax.swing.JLabel lanzados;
     private javax.swing.JButton masCierre;
     private javax.swing.JButton masCredito;
     private javax.swing.JButton masEnsamblador;
@@ -465,13 +473,10 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JButton menosInicio;
     private javax.swing.JButton menosIntro;
     private javax.swing.JButton menosPlot;
-    private javax.swing.JLabel plot;
-    private javax.swing.JLabel plot3;
-    private javax.swing.JLabel salario;
-    private javax.swing.JLabel salario1;
-    private javax.swing.JLabel salario3;
-    private javax.swing.JLabel salario5;
-    private javax.swing.JLabel salarioPM;
+    public static javax.swing.JLabel plot;
+    public static javax.swing.JLabel plot3;
+    public static javax.swing.JLabel salario1;
+    public static javax.swing.JLabel salarioPM;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
