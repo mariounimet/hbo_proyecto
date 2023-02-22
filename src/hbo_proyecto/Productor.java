@@ -17,7 +17,7 @@ public class Productor extends Thread{
     
     int tiempo;
     int tipo;
-    boolean running = true;
+    boolean running = false;
     
     public Productor(int t, int tp){
         this.tiempo = t;
@@ -26,12 +26,18 @@ public class Productor extends Thread{
     
     @Override
     public void run(){
-        while (running){
+        while (true){
             try {
-                GotEstudio.semaforos[tipo].acquire();
-                Thread.sleep(tiempo);
-                GotEstudio.partes[tipo] += 1;
-                System.out.println(GotEstudio.partes[tipo]);
+                if(running){
+                    int x = tiempo;
+                    int y = tipo;
+                    Estudio.semaforos[y].acquire();
+                    Thread.sleep(x);
+                    Estudio.partes[y] += 1;
+                }
+                else{
+                    Thread.yield();
+                }
             } catch (InterruptedException ex) {
                 Logger.getLogger(Productor.class.getName()).log(Level.SEVERE, null, ex);
             }
