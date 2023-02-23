@@ -44,7 +44,6 @@ public class DirectorGOT extends Thread{
                         Thread.sleep(aux);                         
                         EstudioGOT.investigar();
                         
-                        
                     }else{
                         EstudioGOT.estadoDirector("lanzando episodios");
                         EstudioGOT.contDia = resetDias;

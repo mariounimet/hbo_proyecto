@@ -36,6 +36,8 @@ public class EstudioGOT {
     public static ProductorGOT[] plot;
     public static EnsambladorGOT[] ensamblador;
     
+    Reloj reloj;
+    
     public static PMGOT pm;
     public static DirectorGOT director;
     
@@ -55,9 +57,12 @@ public class EstudioGOT {
         
         pm = new PMGOT(dia/12, dia/90);
         director = new DirectorGOT(diasLanzamiento, dia);
+        reloj = new Reloj(dia);
+        
         
         pm.start();
         director.start();
+        reloj.start();
         
         intro[0].start();
         intro[0].running = true;
@@ -91,7 +96,7 @@ public class EstudioGOT {
         InterfaceGOT.lanzados.setText(String.valueOf(capitulosListos + capitulosPlotListos));
         int vistas;
         vistas = (int) ((capitulosListos + capitulosPlotListos)*980000)/150000;
-        ingresos = vistas * 100;
+        ingresos = vistas * 100000;
         int anterior = Integer.parseInt(InterfaceGOT.ganancia.getText());
         int nuevo = anterior+ingresos-salario-salarioPm;
         InterfaceGOT.ganancia.setText(String.valueOf(nuevo));

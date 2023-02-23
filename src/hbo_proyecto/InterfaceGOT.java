@@ -14,7 +14,7 @@ public class InterfaceGOT extends javax.swing.JFrame {
     public InterfaceGOT(String nombre) {
         initComponents();
         this.titulo.setText(nombre);
-        EstudioGOT est = new EstudioGOT(240, 10);
+        EstudioGOT est = new EstudioGOT(240, 30);
     }
 
     private InterfaceGOT() {

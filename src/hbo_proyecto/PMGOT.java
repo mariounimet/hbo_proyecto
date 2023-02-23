@@ -35,6 +35,7 @@ public class PMGOT extends Thread{
                     Thread.sleep(tiempo);
                     if (EstudioGOT.contDia != 0){                      
                         EstudioGOT.contDia -= 1;
+                        
                     }
                     EstudioGOT.revisarDia.release();
                 }else if(rickMorty){
