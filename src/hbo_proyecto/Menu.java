@@ -5,6 +5,12 @@
  */
 package hbo_proyecto;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Mario
@@ -227,9 +233,60 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void importarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_importarActionPerformed
+        String line;
+        String txt = "";
 
+        JFileChooser archivo = new JFileChooser();
+        int seleccion;
+        seleccion = archivo.showOpenDialog(null);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            String nameArchivo = archivo.getSelectedFile().getAbsolutePath();
+            File archivoTxt = new File(nameArchivo);
+            
+            try{
+                FileReader fr = new FileReader(archivoTxt);
+                if (fr.ready()){
+                    BufferedReader br = new BufferedReader(fr);
+                     while ((line = br.readLine()) != ";"){
+                        if (!line.isEmpty()) {
+                            txt += line + "\n";
+                        }
+                     }
+                     if (!txt.isEmpty()) {
+                         String[] txtSplit = txt.split("\n");
+                         for (int i = 0; i < txtSplit.length; i++){
+                             String[] lectura = txt.split(": ");
+                             if(lectura[1] == "Duracion de 1 dia en segundos"){
+                                String duracionDia = lectura[2];
+                             }else if(lectura[1] == "Cantidad de dias entre lanzamientos"){
+                                String DiasLanzamiento = lectura[2];
+                             }else if(lectura[1] == "Cantidad de productores de intro"){
+                                String pIntro = lectura[2];
+                             }else if(lectura[1] == "Cantidad de productores de credito"){
+                                 String pCredito = lectura[2];
+                             }else if(lectura[1] == "Cantidad de productores de inicio"){
+                                 String pInicio = lectura[2];
+                             }else if(lectura[1] == "Cantidad de productores de cierre"){
+                                 String pCierre = lectura[2];
+                             }else if(lectura[1] == "Cantidad de productores de plot twist"){
+                                 String pPlot = lectura[2];
+                             }else if(lectura[1] == "Cantidad inicial de ensambladores"){
+                                 String pEnsamblador = lectura[2];
+                             }
+                        }
+                        br.close();
+                        JOptionPane.showMessageDialog(null, "Se ha cargado el archivo correctamente");
+                     }
+                }else{
+                    JOptionPane.showMessageDialog(null, "El archivo no esta listo para ser leido");
+                    
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Archivo no compatible");
+            }
+        }
+    }//GEN-LAST:event_importarActionPerformed
+      
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int1 = new Interface("GOT");

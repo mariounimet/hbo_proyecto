@@ -1,0 +1,9 @@
+Duracion de 1 dia en segundos: 1
+Cantidad de dias entre lanzamientos: 20
+Cantidad de productores de intro: 1
+Cantidad de productores de credito: 1
+Cantidad de productores de inicio: 1
+Cantidad de productores de cierre: 1
+Cantidad de productores de plot twist: 1
+Cantidad inicial de ensambladores: 1
+;
