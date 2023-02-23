@@ -20,6 +20,7 @@ public class EnsambladorVelma extends Thread {
         this.tiempo = t;
     }
     
+    @Override
     public void run(){
         while (true){
             if(running){

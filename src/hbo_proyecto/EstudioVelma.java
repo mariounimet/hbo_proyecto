@@ -16,11 +16,21 @@ public class EstudioVelma {
     public static Semaphore semaforoEnsamblador = new Semaphore(1);
     public static int [] partes = {0,        0,         0,          0,          0};
                                  //intro    //credito  //inicio    //cierre    //plot
+<<<<<<< HEAD
     public static ProductorGOT[] intro;
     public static ProductorGOT[] credito;
     public static ProductorGOT[] inicio;
     public static ProductorGOT[] cierre;
     public static ProductorGOT[] plot;
+=======
+    public static Semaphore semaforoCountdown = new Semaphore(1);
+    public static int countdown;
+    public static Productor[] intro;
+    public static Productor[] credito;
+    public static Productor[] inicio;
+    public static Productor[] cierre;
+    public static Productor[] plot;
+>>>>>>> 5d7b3ce4ec7e5260fab6817b8986caeaa8e2de76
     
     public EstudioVelma(){
         intro = llenarPuestos(1200, 0);
