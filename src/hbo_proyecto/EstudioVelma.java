@@ -16,6 +16,8 @@ public class EstudioVelma {
     public static Semaphore semaforoEnsamblador = new Semaphore(1);
     public static int [] partes = {0,        0,         0,          0,          0};
                                  //intro    //credito  //inicio    //cierre    //plot
+    public static Semaphore semaforoCountdown = new Semaphore(1);
+    public static int countdown;
     public static Productor[] intro;
     public static Productor[] credito;
     public static Productor[] inicio;
