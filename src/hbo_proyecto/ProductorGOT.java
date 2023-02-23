@@ -13,13 +13,13 @@ import java.util.concurrent.Semaphore;
  *
  * @author Mario
  */
-public class Productor extends Thread{
+public class ProductorGOT extends Thread{
     
     int tiempo;
     int tipo;
     boolean running = false;
     
-    public Productor(int t, int tp){
+    public ProductorGOT(int t, int tp){
         this.tiempo = t;
         this.tipo = tp;
     }
@@ -33,13 +33,13 @@ public class Productor extends Thread{
                     int y = tipo;
                     EstudioGOT.semaforos[y].acquire();
                     Thread.sleep(x);
-                    EstudioGOT.partes[y] += 1;
+                    EstudioGOT.partes[y].release();
                 }
                 else{
                     Thread.yield();
                 }
             } catch (InterruptedException ex) {
-                Logger.getLogger(Productor.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ProductorGOT.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

@@ -24,37 +24,37 @@ public class EnsambladorVelma extends Thread {
         while (true){
             if(running){
                 try {
-                    EstudioGOT.semaforoEnsamblador.acquire();
+                    EstudioVelma.semaforoEnsamblador.acquire();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(EnsambladorVelma.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                if(EstudioGOT.partes[0]>=1 && EstudioGOT.partes[1]>=1 && EstudioGOT.partes[2]>=1 && EstudioGOT.partes[3]>=1 && capPlot < 5){
+                if(EstudioVelma.partes[0]>=1 && EstudioVelma.partes[1]>=1 && EstudioVelma.partes[2]>=1 && EstudioVelma.partes[3]>=1 && capPlot < 5){
                     //Intro                 credito                inicio                   cierre
                     try {
                         
                         Thread.sleep(tiempo);
                         capPlot += 1;
-                        EstudioGOT.capitulosListos +=1;
+                        EstudioVelma.capitulosListos +=1;
                         for(int i = 0; i <= 3; i++){
-                            EstudioGOT.semaforos[i].release();
+                            EstudioVelma.semaforos[i].release();
                         }
                     } catch (InterruptedException ex) {
                         Logger.getLogger(EnsambladorVelma.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }else if(EstudioGOT.partes[0]>=1 && EstudioGOT.partes[1]>=1 && EstudioGOT.partes[2]>=1 && EstudioGOT.partes[3]>=1 && EstudioGOT.partes[4]>=1 && capPlot==5){
+                }else if(EstudioVelma.partes[0]>=1 && EstudioVelma.partes[1]>=1 && EstudioVelma.partes[2]>=1 && EstudioVelma.partes[3]>=1 && EstudioVelma.partes[4]>=1 && capPlot==5){
                     try {
                         
                         Thread.sleep(tiempo);
                         capPlot = 0;
-                        EstudioGOT.capitulosListos +=1;
+                        EstudioVelma.capitulosListos +=1;
                         for(int i = 0; i <= 4; i++){
-                            EstudioGOT.semaforos[i].release();
+                            EstudioVelma.semaforos[i].release();
                         }
                     } catch (InterruptedException ex) {
                         Logger.getLogger(EnsambladorVelma.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                EstudioGOT.semaforoEnsamblador.release();
+                EstudioVelma.semaforoEnsamblador.release();
             }
         }
     }
