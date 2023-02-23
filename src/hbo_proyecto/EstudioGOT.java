@@ -13,9 +13,10 @@ import java.util.logging.Logger;
  *
  * @author Mario
  */
-public class Estudio {
+public class EstudioGOT {
     public static int capitulosListos = 25;
     public static Semaphore[] semaforos = {new Semaphore(30), new Semaphore(25), new Semaphore(50), new Semaphore(55), new Semaphore(40)};
+    public static Semaphore semaforoEnsamblador = new Semaphore(1);
     public static int [] partes = {0,        0,         0,          0,          0};
                                  //intro    //credito  //inicio    //cierre    //plot
     public static Productor[] intro;
@@ -24,7 +25,7 @@ public class Estudio {
     public static Productor[] cierre;
     public static Productor[] plot;
     
-    public Estudio(){
+    public EstudioGOT(){
         capitulosListos = 5;
         
         intro = llenarPuestos(1200, 0);

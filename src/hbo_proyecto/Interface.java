@@ -11,11 +11,11 @@ package hbo_proyecto;
  */
 public class Interface extends javax.swing.JFrame {
 
-    public static Estudio est;
+    public static EstudioGOT est;
     public Interface(String nombre) {
         initComponents();
         this.titulo.setText(nombre);
-        est = new Estudio();
+        est = new EstudioGOT();
     }
 
     private Interface() {

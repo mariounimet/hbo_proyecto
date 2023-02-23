@@ -19,6 +19,14 @@ public class Menu extends javax.swing.JFrame {
 
     Interface int1;
     Interface int2;
+    int Duradia;
+    int Diaslanzamiento;
+    int pIntro;
+    int pCredito;
+    int PInicio;
+    int pCierre;
+    int pPlot;
+    int Ensamblador;
     
     public Menu() {
         initComponents();
@@ -256,22 +264,37 @@ public class Menu extends javax.swing.JFrame {
                          String[] txtSplit = txt.split("\n");
                          for (int i = 0; i < txtSplit.length; i++){
                              String[] lectura = txt.split(": ");
-                             if(lectura[1] == "Duracion de 1 dia en segundos"){
-                                String duracionDia = lectura[2];
-                             }else if(lectura[1] == "Cantidad de dias entre lanzamientos"){
-                                String DiasLanzamiento = lectura[2];
-                             }else if(lectura[1] == "Cantidad de productores de intro"){
-                                String pIntro = lectura[2];
-                             }else if(lectura[1] == "Cantidad de productores de credito"){
-                                 String pCredito = lectura[2];
-                             }else if(lectura[1] == "Cantidad de productores de inicio"){
-                                 String pInicio = lectura[2];
-                             }else if(lectura[1] == "Cantidad de productores de cierre"){
-                                 String pCierre = lectura[2];
-                             }else if(lectura[1] == "Cantidad de productores de plot twist"){
-                                 String pPlot = lectura[2];
-                             }else if(lectura[1] == "Cantidad inicial de ensambladores"){
-                                 String pEnsamblador = lectura[2];
+                             if(lectura[0] == "Duracion de 1 dia en segundos"){
+                                String duracionDia = lectura[1];
+                                this.Duradia = Integer.parseInt(duracionDia);
+                                
+                             }else if(lectura[0] == "Cantidad de dias entre lanzamientos"){
+                                String DiasLanzamiento = lectura[1];
+                                this.Diaslanzamiento = Integer.parseInt(DiasLanzamiento);
+             
+                             }else if(lectura[0] == "Cantidad de productores de intro"){
+                                String pIntro = lectura[1];
+                                this.pIntro = Integer.parseInt(pIntro);
+                                
+                             }else if(lectura[0] == "Cantidad de productores de credito"){
+                                 String pCredito = lectura[1];
+                                 this.pCredito = Integer.parseInt(pCredito);
+                                 
+                             }else if(lectura[0] == "Cantidad de productores de inicio"){
+                                 String pInicio = lectura[1];
+                                 this.PInicio = Integer.parseInt(pInicio);
+                                 
+                             }else if(lectura[0] == "Cantidad de productores de cierre"){
+                                 String pCierre = lectura[1];
+                                 this.pCierre = Integer.parseInt(pCierre);
+                                 
+                             }else if(lectura[0] == "Cantidad de productores de plot twist"){
+                                 String pPlot = lectura[1];
+                                 this.pPlot = Integer.parseInt(pPlot);
+                                 
+                             }else if(lectura[0] == "Cantidad inicial de ensambladores"){
+                                 String Ensamblador = lectura[1];
+                                 this.Ensamblador = Integer.parseInt(Ensamblador);
                              }
                         }
                         br.close();

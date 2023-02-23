@@ -31,9 +31,9 @@ public class Productor extends Thread{
                 if(running){
                     int x = tiempo;
                     int y = tipo;
-                    Estudio.semaforos[y].acquire();
+                    EstudioGOT.semaforos[y].acquire();
                     Thread.sleep(x);
-                    Estudio.partes[y] += 1;
+                    EstudioGOT.partes[y] += 1;
                 }
                 else{
                     Thread.yield();
