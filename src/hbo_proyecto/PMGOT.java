@@ -28,7 +28,8 @@ public class PMGOT extends Thread{
     public void run(){
         while (true){
             try {
-                if(cambioDia){      
+                if(cambioDia){
+                    cambioDia = false;
                     rickMorty = false;
                     EstudioGOT.revisarDia.acquire();
                     Thread.sleep(tiempo);

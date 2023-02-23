@@ -38,16 +38,12 @@ public class DirectorGOT extends Thread{
                         Random r2 = new Random();
                         EstudioGOT.estadoDirector("nada");
                         Thread.sleep(r1.nextInt(duracion/2, (duracion*3)/4));
-                        int aux = 0;
-                        int aux2 = r2.nextInt(duracion/100, duracion/16);
-                        boolean aux3 = true;
+                        int aux = r2.nextInt(duracion/100, duracion/16);
                         EstudioGOT.estadoDirector("supervisar PM");
-                        while(aux <= aux2){
-                            aux += 1;
-                            if (aux3){                            
-                                aux3 = EstudioGOT.investigar();
-                            }
-                        }
+                        System.out.println(aux);
+                        Thread.sleep(aux);                         
+                        EstudioGOT.investigar();
+                        
                         
                     }else{
                         EstudioGOT.estadoDirector("lanzando episodios");
@@ -57,6 +53,9 @@ public class DirectorGOT extends Thread{
                 } catch (InterruptedException ex) {
                     Logger.getLogger(DirectorGOT.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+            else{
+                Thread.yield();
             }
         }
     }

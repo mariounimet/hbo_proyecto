@@ -39,6 +39,9 @@ public class EstudioGOT {
     public static PMGOT pm;
     public static DirectorGOT director;
     
+    public static float[] cantidadProdtuctores = {1, 1, 1, 1, 1, 1};
+    public static int libres = 0;
+    
     public EstudioGOT(int dia, int diasLanzamiento){
         capitulosListos = 0;
         contDia = diasLanzamiento;
@@ -102,6 +105,23 @@ public class EstudioGOT {
             return false;
         }
         return true;
+    }
+    
+    public static void cambiaDia(){
+        pm.cambioDia = true;
+        director.chequear = true;
+        salario += 100;
+    }
+    
+    public static void cambiaHora(){
+        salarioPm += 7;
+        salario += cantidadProdtuctores[0] * 5;
+        salario += cantidadProdtuctores[1] * 3;
+        salario += cantidadProdtuctores[2] * 7;
+        salario += cantidadProdtuctores[3] * 7.5;
+        salario += cantidadProdtuctores[4] * 10;
+        salario += cantidadProdtuctores[5] * 8;
+        
     }
     
     public static void estadoDirector(String msg){
