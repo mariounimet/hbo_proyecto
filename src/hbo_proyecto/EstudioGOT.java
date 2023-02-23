@@ -133,6 +133,10 @@ public class EstudioGOT {
         InterfaceGOT.actividadDirector.setText(msg);
     }
     
+    public static void estadoPM(String msg){
+        InterfaceGOT.actividadPM.setText(msg);
+    }
+    
     public static ProductorGOT[] llenarPuestos(int tiempo, int tipo){
         ProductorGOT[] p = new ProductorGOT[6];
         
