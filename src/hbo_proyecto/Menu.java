@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 public class Menu extends javax.swing.JFrame {
 
     InterfaceGOT int1;
-    InterfaceGOT int2;
+    InterfaceVelma int2;
     int Duradia;
     int Diaslanzamiento;
     int pIntro;
@@ -313,9 +313,9 @@ public class Menu extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int1 = new InterfaceGOT("GOT");
-        //int2 = new InterfaceVelma("Velma");
+        
         int1.setVisible(true);
-        //int2.setVisible(true);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

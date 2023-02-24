@@ -31,7 +31,10 @@ public class EstudioVelma {
     public static Semaphore semaforoCountdown = new Semaphore(1);
     public static int countdown = 0;
     public static PMVelma Pmvelma;
+    public static DirectorVelma director;
     
+    public static float[] cantidadProdtuctores = {1, 1, 1, 1, 1, 1};
+    public static int libres = 0;
 
     
     public EstudioVelma(int dia, int DiasdeLanzamiento){
@@ -41,11 +44,37 @@ public class EstudioVelma {
         cierre = llenarPuestos(dia*3, 3);
         plot = llenarPuestos(dia*3, 4);
         ensamblador = llenarPuestosEnsamblador(dia*2);
+        Pmvelma = new PMVelma(dia/4, (dia/1440)*22);
+        director = new DirectorVelma(DiasdeLanzamiento, dia);
+        reloj = new Reloj(dia);
+        Pmvelma.start();
+        director.start();
+        reloj.start();
         
+        intro[0].start();
+        intro[0].running = true;
+        
+        credito[0].start();
+        credito[0].running = true;
+        
+        inicio[0].start();
+        inicio[0].running = true;
+        
+        cierre[0].start();
+        cierre[0].running = true;
+        
+        plot[0].start();
+        plot[0].running = true;
+        
+        
+        ensamblador[0].start();
+        ensamblador[1].start();
+        ensamblador[0].running = true;
+    
     }
     public static void cambiaDia(){
-        PMVelma.cambioDia = true;
-        directorVelma.chequear = true;
+        Pmvelma.cambioDia = true;
+        director.chequear = true;
         salario += 100;
     }
     
