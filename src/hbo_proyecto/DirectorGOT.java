@@ -40,7 +40,6 @@ public class DirectorGOT extends Thread{
                         Thread.sleep(r1.nextInt(duracion/2, (duracion*3)/4));
                         int aux = r2.nextInt(duracion/100, duracion/16);
                         EstudioGOT.estadoDirector("supervisar PM");
-                        System.out.println(aux);
                         Thread.sleep(aux);                         
                         EstudioGOT.investigar();
                         
