@@ -31,17 +31,21 @@ public class PMGOT extends Thread{
                 if(cambioDia){
                     cambioDia = false;
                     rickMorty = false;
+                    
+                    EstudioGOT.estadoPM("cambiando dia");
                     EstudioGOT.revisarDia.acquire();
                     Thread.sleep(tiempo);
                     if (EstudioGOT.contDia != 0){                      
                         EstudioGOT.contDia -= 1;
-                        
+                        EstudioGOT.cambiaContDia();
                     }
                     EstudioGOT.revisarDia.release();
                 }else if(rickMorty){
+                    EstudioGOT.estadoPM("viendo rick y morty");
                     Thread.sleep(intervalo);
                     rickMorty = !rickMorty;
                 }else{
+                    EstudioGOT.estadoPM("viendo sprint reviews");
                     Thread.sleep(intervalo);
                     rickMorty = !rickMorty;
                 }

@@ -15,6 +15,7 @@ public class Reloj extends Thread{
     
     int hora;
     int contador = 0;
+    int contDias = 0;
     
     public Reloj(int duracion){
         this.hora = duracion/24;
@@ -33,10 +34,9 @@ public class Reloj extends Thread{
             
             if(contador == 24){
                 EstudioGOT.cambiaDia();
-                
+                contDias += 1;
                 contador = 0;
             }
-            
         }
     }
 }

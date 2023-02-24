@@ -22,6 +22,7 @@ public class EstudioGOT {
     public static int faltas = 0;
     public static int salario = 0;
     public static int salarioPm = 0;
+    public static int salarioMes = 0;
     
     
     public static Semaphore buscarPartes = new Semaphore(1);
@@ -36,17 +37,19 @@ public class EstudioGOT {
     public static ProductorGOT[] plot;
     public static EnsambladorGOT[] ensamblador;
     
-    Reloj reloj;
+    public static Reloj reloj;
     
     public static PMGOT pm;
     public static DirectorGOT director;
     
-    public static float[] cantidadProdtuctores = {1, 1, 1, 1, 1, 1};
+    public static int[] cantidadProdtuctores = {1, 1, 1, 1, 1, 1};
     public static int libres = 0;
     
     public EstudioGOT(int dia, int diasLanzamiento){
         capitulosListos = 0;
         contDia = diasLanzamiento;
+        
+        InterfaceGOT.entrega.setText(String.valueOf(contDia));
         
         intro = llenarPuestos(dia, 0);
         credito = llenarPuestos(dia/4, 1);
@@ -59,6 +62,12 @@ public class EstudioGOT {
         director = new DirectorGOT(diasLanzamiento, dia);
         reloj = new Reloj(dia);
         
+        InterfaceGOT.intro.setText(String.valueOf(cantidadProdtuctores[0]));
+        InterfaceGOT.credito.setText(String.valueOf(cantidadProdtuctores[1]));
+        InterfaceGOT.inicio.setText(String.valueOf(cantidadProdtuctores[2]));
+        InterfaceGOT.cierre.setText(String.valueOf(cantidadProdtuctores[3]));
+        InterfaceGOT.plot.setText(String.valueOf(cantidadProdtuctores[4]));
+        InterfaceGOT.ensamblador1.setText(String.valueOf(cantidadProdtuctores[5]));
         
         pm.start();
         director.start();
@@ -94,12 +103,16 @@ public class EstudioGOT {
     
     public static void lanzar(){
         InterfaceGOT.lanzados.setText(String.valueOf(capitulosListos + capitulosPlotListos));
+        
         int vistas;
         vistas = (int) ((capitulosListos + capitulosPlotListos)*980000)/150000;
         ingresos = vistas * 100000;
         int anterior = Integer.parseInt(InterfaceGOT.ganancia.getText());
         int nuevo = anterior+ingresos-salario-salarioPm;
         InterfaceGOT.ganancia.setText(String.valueOf(nuevo));
+        
+        capitulosListos = 0;
+        capitulosPlotListos = 0;
     }
     
     public static boolean investigar(){
@@ -116,6 +129,15 @@ public class EstudioGOT {
         pm.cambioDia = true;
         director.chequear = true;
         salario += 100;
+        
+        if (reloj.contDias == 30){
+            InterfaceGOT.salario1.setText(String.valueOf(salarioMes));
+            salarioMes =0;
+        }
+    }
+    
+    public static void cambiaContDia(){
+        InterfaceGOT.entrega.setText(String.valueOf(contDia));
     }
     
     public static void cambiaHora(){
@@ -127,7 +149,18 @@ public class EstudioGOT {
         salario += cantidadProdtuctores[4] * 10;
         salario += cantidadProdtuctores[5] * 8;
         
+      
+        salarioMes += cantidadProdtuctores[0] * 5;
+        salarioMes += cantidadProdtuctores[1] * 3;
+        salarioMes += cantidadProdtuctores[2] * 7;
+        salarioMes += cantidadProdtuctores[3] * 7.5;
+        salarioMes += cantidadProdtuctores[4] * 10;
+        salarioMes += cantidadProdtuctores[5] * 8;
+        
+        InterfaceGOT.salarioPM.setText(String.valueOf(salarioPm));
     }
+    
+    
     
     public static void estadoDirector(String msg){
         InterfaceGOT.actividadDirector.setText(msg);
@@ -153,5 +186,89 @@ public class EstudioGOT {
             p[i] = new EnsambladorGOT(tiempo);
         }
         return p;
+    }
+    
+    public static void restarIntro(){
+        if (cantidadProdtuctores[0] > 1){
+            intro[cantidadProdtuctores[0]-1].running = false;
+            cantidadProdtuctores[0] -= 1;
+        }
+    }
+    
+    public static void sumarIntro(){
+        if (libres > 0){
+            intro[cantidadProdtuctores[0]-1].running = true;
+            cantidadProdtuctores[0]+= 1;
+        }
+    }
+    public static void restarCredito(){
+        if (cantidadProdtuctores[1] > 1){
+            credito[cantidadProdtuctores[1]-1].running = false;
+            cantidadProdtuctores[1] -= 1;
+            libres += 1;
+        }
+    }
+    
+    public static void sumarCredito(){
+        if (libres > 0){
+            credito[cantidadProdtuctores[1]-1].running = true;
+            cantidadProdtuctores[1]+= 1;
+        }
+    }
+    public static void restarInicio(){
+        if (cantidadProdtuctores[2] > 1){
+            inicio[cantidadProdtuctores[2]-1].running = false;
+            cantidadProdtuctores[2] -= 1;
+            libres += 1;
+        }
+    }
+    
+    public static void sumarInicio(){
+        if (libres > 0){
+            inicio[cantidadProdtuctores[2]-1].running = true;
+            cantidadProdtuctores[2]+= 1;
+        }
+    }
+    public static void restarCierre(){
+        if (cantidadProdtuctores[3] > 1){
+            cierre[cantidadProdtuctores[3]-1].running = false;
+            cantidadProdtuctores[3] -= 1;
+            libres += 1;
+        }
+    }
+    
+    public static void sumarCierre(){
+        if (libres > 0){
+            cierre[cantidadProdtuctores[3]-1].running = true;
+            cantidadProdtuctores[3]+= 1;
+        }
+    }
+    public static void restarPlot(){
+        if (cantidadProdtuctores[4] > 1){
+            plot[cantidadProdtuctores[4]-1].running = false;
+            cantidadProdtuctores[4] -= 1;
+            libres += 1;
+        }
+    }
+    
+    public static void sumarPlot(){
+        if (libres > 0){
+            plot[cantidadProdtuctores[4]-1].running = true;
+            cantidadProdtuctores[4]+= 1;
+        }
+    }
+    public static void restarEnsamblador(){
+        if (cantidadProdtuctores[5] > 1){
+            ensamblador[cantidadProdtuctores[5]-1].running = false;
+            cantidadProdtuctores[5] -= 1;
+            libres += 1;
+        }
+    }
+    
+    public static void sumarEnsamblador(){
+        if (libres > 0){
+            ensamblador[cantidadProdtuctores[5]-1].running = true;
+            cantidadProdtuctores[5]+= 1;
+        }
     }
 }
