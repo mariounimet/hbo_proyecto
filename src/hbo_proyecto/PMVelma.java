@@ -31,13 +31,13 @@ public class PMVelma extends Thread{
                 if(cambioDia){
                     cambioDia = false;
                     rickMorty = false;
-                    EstudioGOT.revisarDia.acquire();
+                    EstudioVelma.revisarDia.acquire();
                     Thread.sleep(tiempo);
-                    if (EstudioGOT.contDia != 0){                      
-                        EstudioGOT.contDia -= 1;
+                    if (EstudioVelma.countdown != 0){                      
+                        EstudioVelma.countdown -= 1;
                         
                     }
-                    EstudioGOT.revisarDia.release();
+                    EstudioVelma.revisarDia.release();
                 }else if(rickMorty){
                     Thread.sleep(intervalo);
                     rickMorty = !rickMorty;

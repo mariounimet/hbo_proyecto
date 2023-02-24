@@ -19,6 +19,7 @@ public class EstudioVelma {
     public static int salarioPm = 0;
     public static Semaphore[] semaforos = {new Semaphore(30), new Semaphore(25), new Semaphore(50), new Semaphore(55), new Semaphore(40)};
     public static Semaphore semaforoEnsamblador = new Semaphore(1);
+    public static Semaphore revisarDia = new Semaphore(1);
     public static int [] partes = {0,        0,         0,          0,          0};
                                  //intro    //credito  //inicio    //cierre    //plot
     public static ProductorVelma[] intro;
@@ -85,10 +86,8 @@ public class EstudioVelma {
         salario += cantidadProdtuctores[2] * 7;
         salario += cantidadProdtuctores[3] * 7.5;
         salario += cantidadProdtuctores[4] * 10;
-        salario += cantidadProdtuctores[5] * 8;
-        
+        salario += cantidadProdtuctores[5] * 8;   
     }
-    
     public static ProductorVelma[] llenarPuestos(int tiempo, int tipo){
         ProductorVelma[] p = new ProductorVelma[12];
         
