@@ -11,10 +11,11 @@ package hbo_proyecto;
  */
 public class InterfaceGOT extends javax.swing.JFrame {
 ;
+    public static EstudioGOT est;
     public InterfaceGOT(String nombre) {
         initComponents();
         this.titulo.setText(nombre);
-        EstudioGOT est = new EstudioGOT(240, 30);
+        est = new EstudioGOT(240, 30);
     }
 
     private InterfaceGOT() {
@@ -346,6 +347,7 @@ public class InterfaceGOT extends javax.swing.JFrame {
     }//GEN-LAST:event_masIntroActionPerformed
 
     private void menosIntroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosIntroActionPerformed
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_menosIntroActionPerformed
 
