@@ -14,8 +14,13 @@ public class InterfaceGOT extends javax.swing.JFrame {
     public static EstudioGOT est;
     public InterfaceGOT(String nombre) {
         initComponents();
+        if(nombre == "GOT"){
         this.titulo.setText(nombre);
-        est = new EstudioGOT(240, 30);
+        est = new EstudioGOT(240, 30, 1, 1, 1, 1, 1, 1);           
+        }else{
+            this.titulo.setText(nombre);
+            est = new EstudioGOT(240, 30, 1, 1, 1, 1, 1, 1); 
+        }
     }
 
     private InterfaceGOT() {
@@ -344,6 +349,7 @@ public class InterfaceGOT extends javax.swing.JFrame {
 
     private void masIntroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masIntroActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_masIntroActionPerformed
 
     private void menosIntroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosIntroActionPerformed

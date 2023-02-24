@@ -15,6 +15,7 @@ public class RelojVelma extends Thread{
     
     int hora;
     int contador = 0;
+    int contDias = 0;
     
     public RelojVelma(int duracion){
         this.hora = duracion/24;
@@ -33,7 +34,7 @@ public class RelojVelma extends Thread{
             
             if(contador == 24){
                 EstudioVelma.cambiaDia();
-                
+                contDias += 1;
                 contador = 0;
             }
             

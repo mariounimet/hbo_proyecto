@@ -31,9 +31,9 @@ public class ProductorVelma extends Thread{
                 if(running){
                     int x = tiempo;
                     int y = tipo;
-                    EstudioGOT.semaforos[y].acquire();
+                    EstudioVelma.semaforos[y].acquire();
                     Thread.sleep(x);
-                    EstudioGOT.partes[y].release();
+                    EstudioVelma.partes[y] += 1;
                 }
                 else{
                     Thread.yield();

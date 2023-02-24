@@ -39,6 +39,8 @@ public class EnsambladorVelma extends Thread {
                         for(int i = 0; i <= 3; i++){
                             EstudioVelma.semaforos[i].release();
                         }
+                            EstudioVelma.semaforos[0].release();
+                            EstudioVelma.semaforos[1].release();    
                     } catch (InterruptedException ex) {
                         Logger.getLogger(EnsambladorVelma.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -47,10 +49,15 @@ public class EnsambladorVelma extends Thread {
                         
                         Thread.sleep(tiempo);
                         capPlot = 0;
-                        EstudioVelma.capitulosListos +=1;
-                        for(int i = 0; i <= 4; i++){
-                            EstudioVelma.semaforos[i].release();
-                        }
+                        EstudioVelma.capitulosListosPlot +=1;
+                        
+                        EstudioVelma.semaforos[0].release();
+                        EstudioVelma.semaforos[1].release(); 
+                        EstudioVelma.semaforos[0].release();
+                        EstudioVelma.semaforos[1].release(); 
+                        EstudioVelma.semaforos[2].release(); 
+                        EstudioVelma.semaforos[4].release(); 
+                        
                     } catch (InterruptedException ex) {
                         Logger.getLogger(EnsambladorVelma.class.getName()).log(Level.SEVERE, null, ex);
                     }

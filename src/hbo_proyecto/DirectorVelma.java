@@ -29,25 +29,25 @@ public class DirectorVelma extends Thread{
             if(chequear){
                 chequear = false;
                 try {
-                    EstudioGOT.estadoDirector("esperando para ver dia");
-                    EstudioGOT.revisarDia.acquire();                   
+                    EstudioVelma.estadoDirector("esperando para ver dia");
+                    EstudioVelma.revisarDia.acquire();                   
                     int dia = EstudioGOT.contDia;
-                    EstudioGOT.revisarDia.release();
+                    EstudioVelma.revisarDia.release();
                     if(dia > 0){
                         Random r1 = new Random();
                         Random r2 = new Random();
                         EstudioGOT.estadoDirector("nada");
                         Thread.sleep(r1.nextInt(duracion/2, (duracion*3)/4));
                         int aux = r2.nextInt(duracion/100, duracion/16);
-                        EstudioGOT.estadoDirector("supervisar PM");
+                        EstudioVelma.estadoDirector("supervisar PM");
                         System.out.println(aux);
                         Thread.sleep(aux);                         
-                        EstudioGOT.investigar();
+                        EstudioVelma.investigar();
                         
                     }else{
-                        EstudioGOT.estadoDirector("lanzando episodios");
-                        EstudioGOT.contDia = resetDias;
-                        EstudioGOT.lanzar();
+                        EstudioVelma.estadoDirector("lanzando episodios");
+                        EstudioVelma.countdown = resetDias;
+                        EstudioVelma.lanzar();
                     }
                 } catch (InterruptedException ex) {
                     Logger.getLogger(DirectorVelma.class.getName()).log(Level.SEVERE, null, ex);

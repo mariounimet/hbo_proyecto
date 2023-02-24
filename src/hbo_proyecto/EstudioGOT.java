@@ -45,7 +45,7 @@ public class EstudioGOT {
     public static int[] cantidadProdtuctores = {1, 1, 1, 1, 1, 1};
     public static int libres = 0;
     
-    public EstudioGOT(int dia, int diasLanzamiento){
+    public EstudioGOT(int dia, int diasLanzamiento, int cantIntro, int cantCredito, int cantInicio, int cantCierre, int cantPlot, int cantEns){
         capitulosListos = 0;
         contDia = diasLanzamiento;
         
@@ -73,25 +73,30 @@ public class EstudioGOT {
         director.start();
         reloj.start();
         
-        intro[0].start();
-        intro[0].running = true;
-        
-        credito[0].start();
-        credito[0].running = true;
-        
-        inicio[0].start();
-        inicio[0].running = true;
-        
-        cierre[0].start();
-        cierre[0].running = true;
-        
-        plot[0].start();
-        plot[0].running = true;
-        
-        
-        ensamblador[0].start();
-        ensamblador[1].start();
-        ensamblador[0].running = true;
+        for (int i = 0; i <= cantIntro; i++){
+            intro[i].start();
+            intro[i].running = true;
+        }
+        for (int i = 0; i <= cantCredito; i++){
+            credito[i].start();
+            credito[i].running = true;
+        }
+        for (int i = 0; i <= cantInicio; i++){
+            inicio[i].start();
+            inicio[i].running = true;
+        }
+        for (int i = 0; i <= cantCierre; i++){
+            cierre[i].start();
+            cierre[i].running = true;
+        }
+        for (int i = 0; i <= cantPlot; i++){
+            plot[i].start();
+            plot[i].running = true;
+        }
+        for (int i = 0; i <= cantEns; i++){
+            ensamblador[i].start();
+            ensamblador[i].running = true;
+        }
     
     }
     public static void sumarEpisodio(){
