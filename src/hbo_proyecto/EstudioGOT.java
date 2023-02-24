@@ -42,7 +42,7 @@ public class EstudioGOT {
     public static PMGOT pm;
     public static DirectorGOT director;
     
-    public static int[] cantidadProdtuctores = {1, 1, 1, 1, 1, 1};
+    public static int[] cantidadProdtuctores = {0, 0, 0, 0, 0, 0};
     public static int libres = 0;
     
     public EstudioGOT(int dia, int diasLanzamiento, int cantIntro, int cantCredito, int cantInicio, int cantCierre, int cantPlot, int cantEns){
@@ -62,41 +62,49 @@ public class EstudioGOT {
         director = new DirectorGOT(diasLanzamiento, dia);
         reloj = new Reloj(dia);
         
+        
+        
+        pm.start();
+        director.start();
+        reloj.start();
+        
+        for (int i = 0; i < cantIntro; i++){
+            intro[i].start();
+            intro[i].running = true;
+            cantidadProdtuctores[0] += 1;
+        }
+        for (int i = 0; i < cantCredito; i++){
+            credito[i].start();
+            credito[i].running = true;
+            cantidadProdtuctores[1] += 1;
+        }
+        for (int i = 0; i < cantInicio; i++){
+            inicio[i].start();
+            inicio[i].running = true;
+            cantidadProdtuctores[2] += 1;
+        }
+        for (int i = 0; i < cantCierre; i++){
+            cierre[i].start();
+            cierre[i].running = true;
+            cantidadProdtuctores[3] += 1;
+        }
+        for (int i = 0; i < cantPlot; i++){
+            plot[i].start();
+            plot[i].running = true;
+            cantidadProdtuctores[4] += 1;
+        }
+        for (int i = 0; i < cantEns; i++){
+            ensamblador[i].start();
+            ensamblador[i].running = true;
+            cantidadProdtuctores[5] += 1;
+        }
+        
         InterfaceGOT.intro.setText(String.valueOf(cantidadProdtuctores[0]));
         InterfaceGOT.credito.setText(String.valueOf(cantidadProdtuctores[1]));
         InterfaceGOT.inicio.setText(String.valueOf(cantidadProdtuctores[2]));
         InterfaceGOT.cierre.setText(String.valueOf(cantidadProdtuctores[3]));
         InterfaceGOT.plot.setText(String.valueOf(cantidadProdtuctores[4]));
         InterfaceGOT.ensamblador1.setText(String.valueOf(cantidadProdtuctores[5]));
-        
-        pm.start();
-        director.start();
-        reloj.start();
-        
-        for (int i = 0; i <= cantIntro; i++){
-            intro[i].start();
-            intro[i].running = true;
-        }
-        for (int i = 0; i <= cantCredito; i++){
-            credito[i].start();
-            credito[i].running = true;
-        }
-        for (int i = 0; i <= cantInicio; i++){
-            inicio[i].start();
-            inicio[i].running = true;
-        }
-        for (int i = 0; i <= cantCierre; i++){
-            cierre[i].start();
-            cierre[i].running = true;
-        }
-        for (int i = 0; i <= cantPlot; i++){
-            plot[i].start();
-            plot[i].running = true;
-        }
-        for (int i = 0; i <= cantEns; i++){
-            ensamblador[i].start();
-            ensamblador[i].running = true;
-        }
     
     }
     public static void sumarEpisodio(){

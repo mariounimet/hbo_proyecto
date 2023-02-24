@@ -16,10 +16,10 @@ public class InterfaceGOT extends javax.swing.JFrame {
         initComponents();
         if(nombre == "GOT"){
         this.titulo.setText(nombre);
-        est = new EstudioGOT(240, 30, 1, 1, 1, 1, 1, 1);           
+        est = new EstudioGOT(240, 30, 2, 2, 2, 2, 2, 1);           
         }else{
             this.titulo.setText(nombre);
-            est = new EstudioGOT(240, 30, 1, 1, 1, 1, 1, 1); 
+            est = new EstudioGOT(240, 30, 2, 2, 2, 2, 2, 2); 
         }
     }
 

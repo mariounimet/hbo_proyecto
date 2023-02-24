@@ -35,7 +35,7 @@ public class EstudioVelma {
     public static PMVelma Pmvelma;
     public static DirectorVelma director;
     
-    public static float[] cantidadProdtuctores = {1, 1, 1, 1, 1, 1};
+    public static float[] cantidadProdtuctores = {0, 0, 0, 0, 0, 0};
     public static int libres = 0;
 
     
@@ -56,27 +56,40 @@ public class EstudioVelma {
         for (int i = 0; i <= cantIntro; i++){
             intro[i].start();
             intro[i].running = true;
+            cantidadProdtuctores[0] += 1;
         }
-        for (int i = 0; i <= cantCredito; i++){
+        for (int i = 0; i < cantCredito; i++){
             credito[i].start();
             credito[i].running = true;
+            cantidadProdtuctores[1] += 1;
         }
-        for (int i = 0; i <= cantInicio; i++){
+        for (int i = 0; i < cantInicio; i++){
             inicio[i].start();
             inicio[i].running = true;
+            cantidadProdtuctores[2] += 1;
         }
-        for (int i = 0; i <= cantCierre; i++){
+        for (int i = 0; i < cantCierre; i++){
             cierre[i].start();
             cierre[i].running = true;
+            cantidadProdtuctores[3] += 1;
         }
-        for (int i = 0; i <= cantPlot; i++){
+        for (int i = 0; i < cantPlot; i++){
             plot[i].start();
             plot[i].running = true;
+            cantidadProdtuctores[4] += 1;
         }
-        for (int i = 0; i <= cantEns; i++){
+        for (int i = 0; i < cantEns; i++){
             ensamblador[i].start();
             ensamblador[i].running = true;
+            cantidadProdtuctores[5] += 1;
         }
+        
+        InterfaceGOT.intro.setText(String.valueOf(cantidadProdtuctores[0]));
+        InterfaceGOT.credito.setText(String.valueOf(cantidadProdtuctores[1]));
+        InterfaceGOT.inicio.setText(String.valueOf(cantidadProdtuctores[2]));
+        InterfaceGOT.cierre.setText(String.valueOf(cantidadProdtuctores[3]));
+        InterfaceGOT.plot.setText(String.valueOf(cantidadProdtuctores[4]));
+        InterfaceGOT.ensamblador1.setText(String.valueOf(cantidadProdtuctores[5]));
     
     }
     public static void sumarEpisodio(){
